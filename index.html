@@ -1,7 +1,159 @@
+
 <!DOCTYPE html>
 <html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Let Me Show You: Learning by Retrieving from Video for Robotics</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <base href="/"> -->
+
+        <!--FACEBOOK-->
+    <meta name="og:image" content="https://innermonologue.github.io/img/teaser.png" />
+    <meta property="og:image" content="https://innermonologue.github.io/img/teaser.png" />
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="2000">
+    <meta property="og:image:height" content="900">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://inner-monologue.github.io/"/>
+    <meta property="og:title" content="Inner Monologue: Embodied Reasoning through Planning with Language Models." />
+    <meta property="og:description" content="Project page for Inner Monologue: Embodied Reasoning through Planning with Language Models" />
+
+        <!--TWITTER-->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Inner Monologue: Embodied Reasoning through Planning with Language Models." />
+    <meta name="twitter:description" content="Project page for Project page for Inner Monologue: Embodied Reasoning through Planning with Language Models" />
+    <meta name="twitter:image" content="https://innermonologue.github.io/img/teaser.png" />
+
+
+<!--     <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
+  <!-- <link rel="icon" type="image/png" href="img/seal_icon.png"> -->
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+    
+    <script src="js/app.js"></script>
+</head>
+
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+    <div class="container" id="main">
+        <div class="row">
+            <h2 class="col-md-12 text-center">
+                <b>Let Me Show You: </br> Learning by Retrieving from Video for Robotics</br> 
+                <!--<small>
+                    
+                </small>-->
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+               <ul class="list-inline">
+                <br>
+
+    <li>Anonymous Author(s)</li>
+        <br><br>
+                
+            </div>
+        </div>
+
+        
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                                
+                <h3>
+                    Abstract
+                </h3>
+                <p class="text-justify">
+                    The language-conditioned robotic manipulation aims to transfer natural language instructions into executable actions, from simple pick-and-place to tasks requiring intent recognition and visual reasoning. Inspired by the dual-process theory in cognitive science—which suggests two parallel systems of fast and slow thinking in human decision-making—we introduce Robotics with Fast and Slow Thinking (RFST), a framework that mimics human cognitive architecture to classify tasks and makes decisions on two systems based on instruction types. Our RFST consists of two key components: 1) an instruction discriminator to determine which system should be activated based on the current user's instruction, and 2) a slow-thinking system that is comprised of a fine-tuned vision-language model aligned with the policy networks, which allow the robot to recognize user's intention or perform reasoning tasks. 
+                    To assess our methodology, we built a dataset featuring real-world trajectories, capturing actions ranging from spontaneous impulses to tasks requiring deliberate contemplation. Our results, both in simulation and real-world scenarios, confirm that our approach adeptly manages intricate tasks that demand intent recognition and reasoning.
+                </p>
+
+                <div class="text-center">
+                    <video id="v0" width="90%" playsinline loop controls autoplay muted>
+                        <source src="img/rfst_demo_v3.mp4" type="video/mp4">
+                        </video>
+                </div>
+            
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+            	<br>
+                <h3>
+                    Framework
+                </h3>
+                <p class="text-justify">
+                    
+                    Dual-process model research indicates that individuals engage with decisions in two primary ways: a rapid, instinctive, subconscious manner (referred to as “System 1 or Fast-thinking”) 
+                    and a measured, deliberate, conscious manner (“System 2 or Slow-thinking”). Based on this theory, we propose a framework that mimics human cognitive architecture to classify tasks and makes decisions on two systems based on instruction types.
+                    
+                    Upon receiving an instruction, the robot processes it through DistilRoBERTa to obtain an embedding. 
+                    Leveraging embedding similarity search, we classified the instruction into either a fast-thinking system or a slow-thinking system.
+                    The framework is shown in below.
+                <div class="text-center">
+                    <image src="img/fst.png" width="80%">
+                </div>
+
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Experiments
+                </h3>
+		<p class="text-justify">
+            We empirically assess the broad applicability of RFST across diverse tasks in both simulated and real-world settings. 
+		</p>
+
+        <h4>
+            Experiments on simulator
+        </h4>
+         <p class="text-justify">
+            Success rates on VIMA-Bench over six tasks. The Tasks 1 and 2 belong to fast-thinking system, and Task 3-6 belong to slow-thinking system. 
+            Our proposed RFST significantly outperforms other methods in accomplishing slow-thinking tasks, achieving notably higher success rates.
+        </p>
+
+        <div class="text-center">
+                    <image src="img/vima_bench_exp.png" width="80%">
+            </div>
+
+        <h4>
+            Experiments on real world
+        </h4>
+        <p class="text-justify">
+            The experiments on the real robot. Orange Bars: Slow-thinking tasks. Blue Bars: Fast-thinking tasks. 
+            RFST empowers real robots to execute complex tasks such as mathematical reasoning and intent recognition, 
+            which were traditionally beyond the scope of conventional robotic manipulation techniques.
+        </p>
+
+        <div class="text-center">
+                <image src="img/real_exp.png" width="80%">
+            </div>
+
+	    </div>
+        </div>
+            
+
+
 </body>
 </html>
